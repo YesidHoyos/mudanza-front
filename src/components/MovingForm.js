@@ -22,15 +22,16 @@ class MovingForm extends Component {
       render() {
         return (
           <div className="container">
+              <br />
               <div className="row">
-                <div class="col-6 offset-3">
+                <div className="col-6 offset-3">
                     <form onSubmit={this.makeMove}>
                         <div className="form-group">
-                            <label for="dni">Cédula del transportador</label>
+                            <label htmlFor="dni">Cédula del transportador</label>
                             <input type="text" required ref={this.dniRef} className="form-control" id="dni" placeholder="1067938367" />
                         </div>
                         <div className="form-group">
-                            <label for="task">Tareas</label>
+                            <label htmlFor="task">Tareas</label>
                             <input type="file" required ref={this.inputFileRef} className="form-control-file" id="task" />
                             <small id="emailHelp" className="form-text text-muted">Seleccione un archivo de texto que contenga las tareas de la mudanza</small>
                         </div>
