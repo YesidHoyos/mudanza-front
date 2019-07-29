@@ -3,20 +3,29 @@ import React, { Component } from 'react';
 class MovingForm extends Component {
     constructor(props) {
         super(props);
+        this.state ={
+            file: null
+        }
         this.dniRef = React.createRef();
-        this.inputFileRef = React.createRef();
         this.makeMove = this.makeMove.bind(this);
+        this.onChangeFile = this.onChangeFile.bind(this)
       }
     
       makeMove(e) {
-        e.preventDefault();
-        // const task = {
-        //   dni: this.dniRef.current.value,
-        //   file: this.inputFileRef.current.value, 
-        // }
+        e.preventDefault();     
+        
+        const dni = this.dniRef.current.value;
     
-        //this.props.makeMove(task);
+        this.props.makeMove(dni, this.state.file);        
     
+      }
+
+      onChangeFile(e) {
+        this.setState(
+            {  
+                file: e.target.files[0]
+            }
+        )
       }
     
       render() {
@@ -32,7 +41,7 @@ class MovingForm extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="task">Tareas</label>
-                            <input type="file" required ref={this.inputFileRef} className="form-control-file" id="task" />
+                            <input type="file" onChange={this.onChangeFile} className="form-control-file" id="task" />
                             <small id="emailHelp" className="form-text text-muted">Seleccione un archivo de texto que contenga las tareas de la mudanza</small>
                         </div>
                         <button type="submit" className="btn btn-primary">Procesar</button>
